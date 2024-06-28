@@ -1,0 +1,15 @@
+{
+  admin off
+}
+
+{$PROTOCOL}://{$INFLUX_DOMAIN} {
+  handle /query {
+      reverse_proxy influxdb:8086 {
+        header_up Authorization "Basic cHVibGljOnB1YmxpYw=="  # public:public credentials
+      }
+  }
+
+  handle {
+    respond 403
+  }
+}
