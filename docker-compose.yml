@@ -7,6 +7,7 @@ volumes:
 services:
   influxdb:
     image: influxdb:1.7
+    restart: unless-stopped
     environment:
       - INFLUXDB_HTTP_AUTH_ENABLED=true
       - INFLUXDB_RETENTION_ENABLED=false
