@@ -3,13 +3,25 @@
 }
 
 {$PROTOCOL}://{$INFLUX_DOMAIN} {
-  handle /query {
-      reverse_proxy influxdb:8086 {
-        header_up Authorization "Basic cHVibGljOnB1YmxpYw=="  # public:public credentials
-      }
-  }
+    # Block any requests in which a different username or password are specified
+    @block_username query u=*
+    @block_password query p=*
 
-  handle {
-    respond 403
-  }
+    handle @block_username {
+        respond 403
+    }
+
+    handle @block_password {
+        respond 403
+    }
+
+    handle /query {
+        reverse_proxy influxdb:8086 {
+            header_up Authorization "Basic cHVibGljOnB1YmxpYw=="  # public:public credentials, overwrite any previous Authorization header.
+        }
+    }
+
+    handle {
+        respond 403
+    }
 }
