@@ -45,6 +45,7 @@ docker compose down -v
 This should suggest as it reads only data:
 ```bash
 ./influx -host profiles.here.com -port 80 -database energy_profiles -execute 'SELECT * FROM "WarmingUp default profiles"'
+./influx -host profiles.here.com -port 80 -database energy_profiles -execute 'SELECT * FROM "Space Heat default profiles"'
 ```
 
 These should not work as they create changes in the database:
