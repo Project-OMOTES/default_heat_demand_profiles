@@ -17,6 +17,7 @@ services:
       - ./influxdb/1.init.iql:/docker-entrypoint-initdb.d/1.init.iql
       - ./influxdb/2.upload_data.sh:/docker-entrypoint-initdb.d/2.upload_data.sh
       - ./influxdb/energy_profiles.warmingup_default_profiles.influx_line:/energy_profiles.warmingup_default_profiles.influx_line
+      - ./influxdb/energy_profiles.space_heat_default_profiles.influx_line:/energy_profiles.space_heat_default_profiles.influx_line
       - influxdb_data:/var/lib/influxdb
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8086/ping" ]
