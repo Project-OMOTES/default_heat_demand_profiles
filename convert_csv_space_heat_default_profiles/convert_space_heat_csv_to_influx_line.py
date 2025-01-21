@@ -4,13 +4,12 @@ import datetime
 
 influx_measurement_name = 'Space\\ Heat\\ default\\ profiles'
 time_column_name = 'time'
-files_with_measurement_name = {'SpaceHeat_and_HotWater_NormalizedPowerProfile_1700_1950.csv': 'SpaceHeat_and_HotWater',
-         'SpaceHeat_and_HotWater_NormalizedPowerProfile_1900_2000.csv': 'SpaceHeat_and_HotWater',
-         'SpaceHeat_and_HotWater_NormalizedPowerProfile_2000_2010.csv': 'SpaceHeat_and_HotWater',
-         'SpaceHeat_NormalizedPowerProfile_1700_1950.csv': 'SpaceHeat',
-         'SpaceHeat_NormalizedPowerProfile_1900_2000.csv': 'SpaceHeat',
-         'SpaceHeat_NormalizedPowerProfile_2000_2010.csv': 'SpaceHeat'}
-
+files_with_measurement_name = {'SpaceHeat&HotWater_PowerProfile_1700_1950.csv': 'SpaceHeat_and_HotWater',
+         'SpaceHeat&HotWater_PowerProfile_1900_2000.csv': 'SpaceHeat_and_HotWater',
+         'SpaceHeat&HotWater_PowerProfile_2000_2010.csv': 'SpaceHeat_and_HotWater',
+         'SpaceHeat_PowerProfile_1700_1950.csv': 'SpaceHeat',
+         'SpaceHeat_PowerProfile_1900_2000.csv': 'SpaceHeat',
+         'SpaceHeat_PowerProfile_2000_2010.csv': 'SpaceHeat'}
 
 dataframe = OrderedDict()
 
