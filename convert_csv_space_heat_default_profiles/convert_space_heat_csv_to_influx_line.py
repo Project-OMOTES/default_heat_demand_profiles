@@ -4,18 +4,21 @@ import datetime
 
 influx_measurement_name = 'Space\\ Heat\\ default\\ profiles'
 time_column_name = 'time'
-files_with_measurement_name = {'SpaceHeat&HotWater_PowerProfile_1700_1950.csv': 'SpaceHeat_and_HotWater',
-         'SpaceHeat&HotWater_PowerProfile_1900_2000.csv': 'SpaceHeat_and_HotWater',
-         'SpaceHeat&HotWater_PowerProfile_2000_2010.csv': 'SpaceHeat_and_HotWater',
-         'SpaceHeat_PowerProfile_1700_1950.csv': 'SpaceHeat',
-         'SpaceHeat_PowerProfile_1900_2000.csv': 'SpaceHeat',
-         'SpaceHeat_PowerProfile_2000_2010.csv': 'SpaceHeat'}
+files_with_measurement_name_and_field_key = [
+    ('SpaceHeat&HotWater_PowerProfile_1700_1950.csv', 'SpaceHeat_and_HotWater', 'SpaceHeat&HotWater_PowerProfile_1700_1950'),
+    ('SpaceHeat&HotWater_PowerProfile_1900_2000.csv', 'SpaceHeat_and_HotWater', 'SpaceHeat&HotWater_PowerProfile_1900_2000'),
+    ('SpaceHeat&HotWater_PowerProfile_2000_2010.csv', 'SpaceHeat_and_HotWater', 'SpaceHeat&HotWater_PowerProfile_2000_2010'),
+    ('SpaceHeat&HotWater_PowerProfile_1700_1950.csv', 'SpaceHeat_and_HotWater', 'SpaceHeat_and_HotWater_PowerProfile_1700_1950'),
+    ('SpaceHeat&HotWater_PowerProfile_1900_2000.csv', 'SpaceHeat_and_HotWater', 'SpaceHeat_and_HotWater_PowerProfile_1900_2000'),
+    ('SpaceHeat&HotWater_PowerProfile_2000_2010.csv', 'SpaceHeat_and_HotWater', 'SpaceHeat_and_HotWater_PowerProfile_2000_2010'),
+    ('SpaceHeat_PowerProfile_1700_1950.csv', 'SpaceHeat', 'SpaceHeat_PowerProfile_1700_1950'),
+    ('SpaceHeat_PowerProfile_1900_2000.csv', 'SpaceHeat', 'SpaceHeat_PowerProfile_1900_2000'),
+    ('SpaceHeat_PowerProfile_2000_2010.csv', 'SpaceHeat', 'SpaceHeat_PowerProfile_2000_2010')
+]
 
 dataframe = OrderedDict()
 
-for file_name, measurement_name in files_with_measurement_name.items():
-    field_key = file_name.rstrip('.csv')
-
+for file_name, measurement_name, field_key in files_with_measurement_name_and_field_key:
     with open(file_name) as csv_file:
         csv_reader = csv.DictReader(csv_file)
 
